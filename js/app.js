@@ -1,19 +1,4 @@
-/**
- * ==============================================================================
- * StockPro - Sistema de Inventario
- * Curso: Desarrollo de Interfaces I | Instituto IDAT
- * Archivo: js/app.js
- * Descripción: Lógica de aplicación en JavaScript Vanilla (sin frameworks).
- *
- * Guía de lectura:
- * - Estado y datos: catálogo inicial, productos activos, filtros y página actual.
- * - Utilidades y almacenamiento: formato, estados de stock y persistencia local.
- * - Vista: métricas del tablero, tabla, alertas, filtros y paginación.
- * - Acciones: formularios CRUD, movimientos de stock, resumen y exportaciones.
- * - Eventos e inicio: conexión de los controles HTML con sus funciones.
- * ==============================================================================
- */
-
+¿
 // Se ejecuta en modo estricto para buenas prácticas de desarrollo
 'use strict';
 

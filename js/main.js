@@ -1,17 +1,4 @@
-/**
- * ==============================================================================
- * StockPro - Landing Page Profesional
- * Curso: Desarrollo de Interfaces I | Instituto IDAT
- * Archivo: js/main.js
- * Descripción: Interactividad de la página de inicio en JavaScript Vanilla (ES6+).
- *
- * Guía de lectura:
- * - Efectos al desplazarse: navbar, botón "volver arriba" y revelado de secciones.
- * - Animaciones: contadores de métricas y titular que se escribe progresivamente.
- * - Formulario: validación de datos y simulación visual de un envío exitoso.
- * - La inicialización se ejecuta cuando el navegador termina de construir el DOM.
- * ==============================================================================
- */
+
 
 'use strict';
 
