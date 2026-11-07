@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StockPro - El sistema de inventario web más fácil y rápido para bodegas, tiendas y minimarkets en el Perú. Controla stock, alertas y precios sin complicaciones.">
+    <title>StockPro | Sistema de Inventario para Bodegas y Minimarkets</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 CSS por CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons 1.11.3 por CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Hoja de estilos personalizada de la Landing Page -->
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarPrincipal" data-bs-offset="100" tabindex="0">
+
+    <!-- Enlace de accesibilidad: Saltar al contenido principal -->
+    <a href="#hero" class="skip-to-content visually-hidden-focusable">Saltar al contenido principal</a>
+
+    <!-- ========================================================================= -->
+    <!-- 1. NAVBAR FIJA INTELIGENTE Y NAVEGACIÓN                                  -->
+    <!-- ========================================================================= -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-landing" id="navbarPrincipal" aria-label="Navegación principal de StockPro">
+            <div class="container px-3 px-lg-4">
+                
+                <!-- Logo corporativo -->
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+                    <div class="brand-badge-icon">
+                        <i class="bi bi-box-seam-fill text-accent fs-4" aria-hidden="true"></i>
+                    </div>
+                    <span class="fw-bold tracking-tight fs-4 text-brand">Stock<span class="text-accent">Pro</span></span>
+                </a>
+
+                <!-- Botón móvil para abrir el menú -->
+                <div class="d-flex align-items-center gap-2 d-lg-none">
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <!-- Enlaces del menú y CTAs -->
+                <div class="collapse navbar-collapse" id="navbarLinks">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 py-2 py-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="#beneficios">Beneficios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="#funciones">Funciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="#como-funciona">Cómo funciona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" href="#preguntas">Preguntas</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-2 pt-2 pt-lg-0">
+                        <!-- Botón secundario: Entrar a la app -->
+                        <a href="index.html" class="btn btn-outline-brand btn-sm d-none d-sm-inline-flex align-items-center gap-1" title="Ir al panel de inventario">
+                            <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                            <span>Acceso App</span>
+                        </a>
+
+                        <!-- Botón principal CTA: Probar gratis -->
+                        <a href="#contacto" class="btn btn-accent btn-sm d-inline-flex align-items-center gap-2 shadow-sm">
+                            <span class="fw-semibold">Probar gratis</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- 2. HERO SECTION CON MAQUETA HTML/CSS DEL PANEL STOCKPRO                   -->
+    <!-- ========================================================================= -->
+    <section id="hero" class="hero-section py-5">
+        <div class="container px-3 px-lg-4 pt-4 pt-lg-5">
+            <div class="row align-items-center g-5 min-vh-lg-80">
+                
+                <!-- Columna Izquierda: Mensaje Potente y Llamados a la Acción -->
+                <div class="col-12 col-lg-6">
+                    <div class="badge-tag d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill">
+                        <span class="badge-dot"></span>
+                        <span class="fs-xs fw-semibold text-uppercase tracking-wider">Diseñado para bodegas y minimarkets</span>
+                    </div>
+
+                    <h1 class="hero-title hero-typewriter display-5 fw-extrabold text-brand mb-3" aria-label="Controla tu inventario en segundos, sin complicaciones ni pérdidas.">
+                        <span class="hero-typewriter-prefix" aria-hidden="true">Controla tu inventario en segundos, </span><span class="text-accent-highlight hero-typewriter-highlight" aria-hidden="true">sin complicaciones ni pérdidas.</span>
+                    </h1>
+
+                    <p class="hero-subtitle lead text-muted-custom mb-4">
+                        El sistema web simple y potente que te avisa cuándo reponer productos, calcula el valor de tu negocio y evita que te quedes sin mercadería.
+                    </p>
+
+                    <!-- Botones de Acción -->
+                    <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3 mb-4">
+                        <a href="#contacto" class="btn btn-accent btn-lg d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
+                            <i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i>
+                            <span>Probar gratis 14 días</span>
+                        </a>
+                        <a href="index.html" class="btn btn-outline-brand btn-demo-no-hover btn-lg d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-play-circle-fill text-accent" aria-hidden="true"></i>
+                            <span>Ver demostración</span>
+                        </a>
+                    </div>
+
+                    <!-- Garantías y Confianza -->
+                    <div class="hero-trust-list d-flex flex-wrap align-items-center gap-3 pt-2 text-muted-custom fs-xs">
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="bi bi-check-circle-fill text-success" aria-hidden="true"></i>
+                            <span>Sin tarjeta de crédito</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="bi bi-check-circle-fill text-success" aria-hidden="true"></i>
+                            <span>Listo en menos de 3 minutos</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="bi bi-check-circle-fill text-success" aria-hidden="true"></i>
+                            <span>Soporte por WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Maqueta Interactiva de StockPro en HTML/CSS Puro -->
+                <div class="col-12 col-lg-6">
+                    <div class="mockup-window dashboard-animated shadow-lg rounded-4 overflow-hidden border">
+                        
+                        <!-- Barra de ventana tipo navegador/app -->
+                        <div class="mockup-header px-3 py-2 d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="mockup-circle bg-danger"></span>
+                                <span class="mockup-circle bg-warning"></span>
+                                <span class="mockup-circle bg-success"></span>
+                                <span class="mockup-tab-title ms-2 fs-xs fw-semibold text-muted">StockPro - Panel en Vivo</span>
+                            </div>
+                            <span class="badge bg-success-subtle text-success fs-xs fw-semibold">
+                                <i class="bi bi-circle-fill online-status-dot me-1" style="font-size: 6px;"></i>En línea
+                            </span>
+                        </div>
+
+                        <!-- Cuerpo del Mockup (Resumen del Dashboard) -->
+                        <div class="mockup-body p-3 p-md-4">
+                            
+                            <!-- 3 Mini Tarjetas KPI -->
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <div class="mini-kpi-card p-2 rounded-3 border">
+                                        <span class="fs-xs text-muted d-block text-uppercase">Productos</span>
+                                        <strong class="fs-6 text-brand">142</strong>
+                                        <span class="mini-trend text-success"><i class="bi bi-arrow-up-short"></i>+12 hoy</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mini-kpi-card p-2 rounded-3 border">
+                                        <span class="fs-xs text-muted d-block text-uppercase">Valor Total</span>
+                                        <strong class="fs-6 text-brand">S/ 8,450</strong>
+                                        <span class="mini-trend text-muted">En almacén</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mini-kpi-card p-2 rounded-3 border border-danger-subtle bg-danger-subtle">
+                                        <span class="fs-xs text-danger fw-bold d-block text-uppercase">Stock Bajo</span>
+                                        <strong class="fs-6 text-danger">3 alertas</strong>
+                                        <span class="mini-trend text-danger">¡Reponer ya!</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mini Banner de Alerta -->
+                            <div class="mini-alert p-2 rounded-2 mb-3 d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2 fs-xs">
+                                    <i class="bi bi-exclamation-triangle-fill text-danger fs-6" aria-hidden="true"></i>
+                                    <span><strong>Atención:</strong> Leche Gloria y Arroz 1kg están por agotarse.</span>
+                                </div>
+                                <span class="badge bg-danger fs-xs">Alerta</span>
+                            </div>
+
+                            <!-- Mini Tabla de Productos Simulada -->
+                            <div class="mini-table-wrapper rounded-3 border overflow-hidden">
+                                <div class="table-responsive">
+                                    <table class="table table-sm align-middle mb-0 fs-xs">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th class="text-end">Precio</th>
+                                                <th class="text-center">Stock</th>
+                                                <th class="text-end">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><i class="bi bi-box me-1 text-primary"></i>Arroz Extra 1kg</td>
+                                                <td class="text-end fw-semibold">S/ 4.80</td>
+                                                <td class="text-center fw-bold text-danger">4 un.</td>
+                                                <td class="text-end"><span class="badge bg-danger">Stock bajo</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="bi bi-box me-1 text-primary"></i>Aceite Vegetal 900ml</td>
+                                                <td class="text-end fw-semibold">S/ 9.50</td>
+                                                <td class="text-center fw-bold text-success">24 un.</td>
+                                                <td class="text-end"><span class="badge bg-success">Disponible</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="bi bi-box me-1 text-primary"></i>Lavavajillas 500g</td>
+                                                <td class="text-end fw-semibold">S/ 4.50</td>
+                                                <td class="text-center fw-bold text-secondary">0 un.</td>
+                                                <td class="text-end"><span class="badge bg-secondary">Agotado</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="mockup-footer-note text-center mt-3 fs-xs text-muted">
+                                <i class="bi bi-shield-check text-accent me-1" aria-hidden="true"></i>
+                                Actualización instantánea guardada en tu navegador
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. BARRA DE MÉTRICAS CON CONTADORES ANIMADOS (INTERSECTION OBSERVER)      -->
+    <!-- ========================================================================= -->
+    <section class="metrics-bar py-4" id="metricas" aria-label="Métricas del impacto de StockPro">
+        <div class="container px-3 px-lg-4">
+            <div class="row g-4 text-center">
+                
+                <!-- Métrica 1 -->
+                <div class="col-6 col-md-3">
+                    <div class="metric-item p-3 rounded-3">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="display-6 fw-extrabold text-accent">+</span>
+                            <span class="display-6 fw-extrabold text-brand counter-number" data-target="500">0</span>
+                        </div>
+                        <span class="fs-sm fw-semibold text-muted-custom d-block mt-1">Bodegas y minimarkets</span>
+                    </div>
+                </div>
+
+                <!-- Métrica 2 -->
+                <div class="col-6 col-md-3">
+                    <div class="metric-item p-3 rounded-3">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="display-6 fw-extrabold text-brand counter-number" data-target="18000">0</span>
+                            <span class="display-6 fw-extrabold text-accent">+</span>
+                        </div>
+                        <span class="fs-sm fw-semibold text-muted-custom d-block mt-1">Productos controlados</span>
+                    </div>
+                </div>
+
+                <!-- Métrica 3 -->
+                <div class="col-6 col-md-3">
+                    <div class="metric-item p-3 rounded-3">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="display-6 fw-extrabold text-brand counter-number" data-target="98">0</span>
+                            <span class="display-6 fw-extrabold text-accent">%</span>
+                        </div>
+                        <span class="fs-sm fw-semibold text-muted-custom d-block mt-1">Satisfacción comprobada</span>
+                    </div>
+                </div>
+
+                <!-- Métrica 4 -->
+                <div class="col-6 col-md-3">
+                    <div class="metric-item p-3 rounded-3">
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <span class="display-6 fw-extrabold text-accent">S/</span>
+                            <span class="display-6 fw-extrabold text-brand counter-number" data-target="2">0</span>
+                            <span class="display-6 fw-extrabold text-accent">M+</span>
+                        </div>
+                        <span class="fs-sm fw-semibold text-muted-custom d-block mt-1">Mercadería valorizada</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. BENEFICIOS CLAVE (DISEÑO VARIADO Y NO REPETITIVO)                      -->
+    <!-- ========================================================================= -->
+    <section id="beneficios" class="section-padding py-5">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-5">
+                <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                    ¿Por qué elegir StockPro?
+                </span>
+                <h2 class="section-title h2 fw-bold text-brand mb-2">Diseñado para la realidad de tu negocio</h2>
+                <p class="section-lead text-muted-custom">
+                    Olvídate de los cuadernos desordenados y de las planillas de cálculo complicadas.
+                </p>
+            </div>
+
+            <!-- Grilla variada de 4 beneficios -->
+            <div class="row g-3 align-items-stretch">
+                
+                <!-- Beneficio 1: Tarjeta destacada grande con fondo suave -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="benefit-card h-100 p-3 p-lg-4 rounded-4 border benefit-featured">
+                        <div class="benefit-icon-box bg-accent text-brand rounded-3 mb-3">
+                            <i class="bi bi-cash-coin fs-4" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-brand mb-2">Cero pérdidas por mercadería olvidada</h3>
+                        <p class="text-muted-custom small mb-3">
+                            Monitorea el valor total de tu almacén al segundo. Sabrás exactamente cuánto dinero tienes invertido en estantes y qué productos rotan más rápido.
+                        </p>
+                        <div class="d-flex align-items-center gap-2 text-accent fw-semibold fs-sm">
+                            <i class="bi bi-check2-circle fs-5" aria-hidden="true"></i>
+                            <span>Calcula precio × stock automáticamente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficio 2: Tarjeta limpia -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="benefit-card h-100 p-3 p-lg-4 rounded-4 border">
+                        <div class="benefit-icon-box bg-danger-subtle text-danger rounded-3 mb-3">
+                            <i class="bi bi-bell-fill fs-4" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-brand mb-2">Alertas para reponer a tiempo</h3>
+                        <p class="text-muted-custom small mb-3">
+                            Configura un stock mínimo por artículo. Si te quedan pocas botellas de aceite o bolsas de arroz, el sistema te avisa antes de que pierdas ventas.
+                        </p>
+                        <div class="d-flex align-items-center gap-2 text-danger fw-semibold fs-sm">
+                            <i class="bi bi-exclamation-octagon fs-5" aria-hidden="true"></i>
+                            <span>Semáforo de reposición inmediata</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficio 3: Horizontal -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="benefit-card h-100 p-3 p-lg-4 rounded-4 border">
+                        <div class="benefit-icon-box bg-primary-subtle text-primary rounded-3 mb-3">
+                            <i class="bi bi-phone-fill fs-4" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-brand mb-2">Tu inventario en cualquier dispositivo</h3>
+                        <p class="text-muted-custom small mb-3">
+                            No requieres servidores costosos ni instalaciones técnicas. Abre la página en el navegador de tu teléfono o PC y comienza a registrar.
+                        </p>
+                        <div class="d-flex align-items-center gap-2 text-primary fw-semibold fs-sm">
+                            <i class="bi bi-lightning-charge-fill fs-5" aria-hidden="true"></i>
+                            <span>100% responsivo y táctil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficio 4: Horizontal -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="benefit-card h-100 p-3 p-lg-4 rounded-4 border">
+                        <div class="benefit-icon-box bg-success-subtle text-success rounded-3 mb-3">
+                            <i class="bi bi-file-earmark-excel-fill fs-4" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-brand mb-2">Reportes listos para exportar</h3>
+                        <p class="text-muted-custom small mb-3">
+                            Descarga tu inventario completo en formato CSV o JSON cuando quieras para compartir con tu contador o archivar en tu computadora.
+                        </p>
+                        <div class="d-flex align-items-center gap-2 text-success fw-semibold fs-sm">
+                            <i class="bi bi-download fs-5" aria-hidden="true"></i>
+                            <span>Descarga inmediata sin trabas</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 5. FUNCIONES CON PESTAÑAS (NAV-PILLS DE BOOTSTRAP) Y MAQUETAS             -->
+    <!-- ========================================================================= -->
+    <section id="funciones" class="section-padding py-5 bg-surface-alt">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-4">
+                <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                    Módulos Especializados
+                </span>
+                <h2 class="section-title h2 fw-bold text-brand mb-2">Todo lo que necesitas en una sola pantalla</h2>
+                <p class="section-lead text-muted-custom">
+                    Descubre cómo StockPro resuelve las tareas cotidianas de tu mostrador.
+                </p>
+            </div>
+
+            <!-- Botones Nav-Pills de Bootstrap -->
+            <ul class="nav nav-pills feature-tabs justify-content-center gap-2 mb-4" id="pillsFuncionesTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active px-3 py-2 fw-semibold d-flex align-items-center gap-2" id="pill-productos-tab" data-bs-toggle="pill" data-bs-target="#pill-productos" type="button" role="tab" aria-controls="pill-productos" aria-selected="true">
+                        <i class="bi bi-boxes" aria-hidden="true"></i>
+                        <span>Productos</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link px-3 py-2 fw-semibold d-flex align-items-center gap-2" id="pill-stock-tab" data-bs-toggle="pill" data-bs-target="#pill-stock" type="button" role="tab" aria-controls="pill-stock" aria-selected="false">
+                        <i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+                        <span>Stock</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link px-3 py-2 fw-semibold d-flex align-items-center gap-2" id="pill-alertas-tab" data-bs-toggle="pill" data-bs-target="#pill-alertas" type="button" role="tab" aria-controls="pill-alertas" aria-selected="false">
+                        <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
+                        <span>Alertas</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link px-3 py-2 fw-semibold d-flex align-items-center gap-2" id="pill-reportes-tab" data-bs-toggle="pill" data-bs-target="#pill-reportes" type="button" role="tab" aria-controls="pill-reportes" aria-selected="false">
+                        <i class="bi bi-pie-chart" aria-hidden="true"></i>
+                        <span>Reportes</span>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Contenido de las Pestañas -->
+            <div class="tab-content" id="pillsFuncionesTabContent" style="margin-top:  50px;">
+                
+                <!-- Pestaña 1: Productos -->
+                <div class="tab-pane fade show active" id="pill-productos" role="tabpanel" aria-labelledby="pill-productos-tab" tabindex="0">
+                    <div class="row align-items-center g-4 p-4 p-lg-5 bg-card rounded-4 border feature-panel">
+                        <div class="col-12 col-lg-5">
+                            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-1 fw-bold fs-xs">MÓDULO CATÁLOGO</span>
+                            <h3 class="h3 fw-bold text-brand mb-3">Catálogo ágil con filtros por categoría</h3>
+                            <p class="text-muted-custom mb-3">
+                                Registra tus artículos con código único, nombre comercial, categoría y precio. Encuentra cualquier producto en milisegundos escribiendo en el buscador.
+                            </p>
+                            <ul class="list-unstyled text-muted-custom mb-4 fs-sm">
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Categorías: Abarrotes, Bebidas, Lácteos, Limpieza y Snacks.</span>
+                                </li>
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Buscador reactivo en tiempo real sin recargar página.</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Validación en vivo para impedir códigos duplicados.</span>
+                                </li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-navy btn-sm d-inline-flex align-items-center gap-2">
+                                <span>Ver cómo organizar tu catálogo</span>
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <!-- Maqueta de Catálogo -->
+                            <div class="tab-mockup p-3 rounded-3 border bg-light shadow-sm">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div class="input-group input-group-sm w-50">
+                                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                                        <input type="text" class="form-control" value="Leche" readonly>
+                                    </div>
+                                    <span class="badge product-count-badge fs-xs">1 de 12 productos</span>
+                                </div>
+                                <div class="p-3 bg-white rounded-3 border">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <span class="fs-xs font-monospace text-muted">PROD-003</span>
+                                            <h4 class="h6 fw-bold mb-0 text-navy">Leche Evaporada Gloria Azul 400g</h4>
+                                            <span class="badge bg-light text-dark border fs-xs">Lácteos</span>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="h6 fw-bold text-success d-block mb-0">S/ 4.20</span>
+                                            <span class="badge bg-danger">Stock: 6 un.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 2: Stock -->
+                <div class="tab-pane fade" id="pill-stock" role="tabpanel" aria-labelledby="pill-stock-tab" tabindex="0">
+                    <div class="row align-items-center g-4 p-4 p-lg-5 bg-card rounded-4 border feature-panel">
+                        <div class="col-12 col-lg-5">
+                            <span class="badge bg-success-subtle text-success mb-2 px-3 py-1 fw-bold fs-xs">MÓDULO MOVIMIENTOS</span>
+                            <h3 class="h3 fw-bold text-brand mb-3">Entradas y salidas a la velocidad de la luz</h3>
+                            <p class="text-muted-custom mb-3">
+                                ¿Llegó el camión repartidor o hiciste una venta grande? Con un solo toque abres el modal de movimiento para sumar o restar existencias con total seguridad.
+                            </p>
+                            <ul class="list-unstyled text-muted-custom mb-4 fs-sm">
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Bloqueo inteligente: impide salidas mayores al stock disponible.</span>
+                                </li>
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Campo de motivo opcional: merma, compra o venta rápida.</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Notificaciones automáticas (toasts) que confirman la acción.</span>
+                                </li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-navy btn-sm d-inline-flex align-items-center gap-2">
+                                <span>Probar control de movimientos</span>
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <!-- Maqueta de Movimientos -->
+                            <div class="tab-mockup p-4 rounded-3 border bg-light shadow-sm">
+                                <h4 class="h6 fw-bold text-navy mb-3"><i class="bi bi-arrow-left-right me-2 text-accent"></i>Registrar Movimiento</h4>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <div class="p-2 bg-success-subtle text-success border border-success rounded text-center fw-bold fs-xs">
+                                            <i class="bi bi-box-arrow-in-down me-1"></i> Entrada (+)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-2 bg-white text-muted border rounded text-center fs-xs">
+                                            <i class="bi bi-box-arrow-up-right me-1"></i> Salida (-)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label fs-xs fw-semibold mb-1">Cantidad a ingresar</label>
+                                    <input type="text" class="form-control form-control-sm" value="24 unidades" readonly>
+                                </div>
+                                <button type="button" class="btn btn-navy btn-sm w-100 disabled">Guardar Entrada</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 3: Alertas -->
+                <div class="tab-pane fade" id="pill-alertas" role="tabpanel" aria-labelledby="pill-alertas-tab" tabindex="0">
+                    <div class="row align-items-center g-4 p-4 p-lg-5 bg-card rounded-4 border feature-panel">
+                        <div class="col-12 col-lg-5">
+                            <span class="badge bg-danger-subtle text-danger mb-2 px-3 py-1 fw-bold fs-xs">MÓDULO SEGURIDAD</span>
+                            <h3 class="h3 fw-bold text-brand mb-3">Semáforo de reposición y stock crítico</h3>
+                            <p class="text-muted-custom mb-3">
+                                Cada vez que un producto alcanza el límite mínimo que definiste, StockPro activa un banner destacado en la parte superior con los nombres de los productos que debes comprar.
+                            </p>
+                            <ul class="list-unstyled text-muted-custom mb-4 fs-sm">
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Distinción clara entre "Stock bajo" y "Agotado".</span>
+                                </li>
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Botón directo "Ver solo stock bajo" para armar tu lista de compras.</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Filas resaltadas sutilmente en la tabla para atención visual.</span>
+                                </li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-navy btn-sm d-inline-flex align-items-center gap-2">
+                                <span>Ver sistema de alertas</span>
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <!-- Maqueta de Alertas -->
+                            <div class="tab-mockup p-3 rounded-3 border bg-light shadow-sm">
+                                <div class="alert alert-danger border-start border-danger border-4 mb-3 p-3">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <i class="bi bi-exclamation-triangle-fill text-danger fs-5"></i>
+                                        <strong class="fs-sm">¡Alerta de Reposición Inmediata!</strong>
+                                    </div>
+                                    <p class="mb-0 fs-xs text-danger-emphasis">3 productos bajo el mínimo: Leche Gloria (6 un.), Agua San Luis (4 un.), Papas Lays (5 un.).</p>
+                                </div>
+                                <div class="p-2 bg-white rounded border d-flex justify-content-between align-items-center fs-xs">
+                                    <span>Agua Mineral San Luis 625ml</span>
+                                    <span class="badge bg-danger">4 un. (Mín: 15)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestaña 4: Reportes -->
+                <div class="tab-pane fade" id="pill-reportes" role="tabpanel" aria-labelledby="pill-reportes-tab" tabindex="0">
+                    <div class="row align-items-center g-4 p-4 p-lg-5 bg-card rounded-4 border feature-panel">
+                        <div class="col-12 col-lg-5">
+                            <span class="badge bg-info-subtle text-info-emphasis mb-2 px-3 py-1 fw-bold fs-xs">MÓDULO REPORTES</span>
+                            <h3 class="h3 fw-bold text-brand mb-3">Valor por categoría y exportación profesional</h3>
+                            <p class="text-muted-custom mb-3">
+                                Conoce en qué categorías tienes concentrada la mayor parte de tu inversión económica a través de barras de progreso intuitivas con porcentaje y valor en Soles.
+                            </p>
+                            <ul class="list-unstyled text-muted-custom mb-4 fs-sm">
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Cálculo automático de porcentajes de participación.</span>
+                                </li>
+                                <li class="mb-2 d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Modal de resumen consolidado para balance rápido.</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-check-lg text-accent fw-bold" aria-hidden="true"></i>
+                                    <span>Descarga en CSV con codificación UTF-8 compatible con Excel.</span>
+                                </li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-navy btn-sm d-inline-flex align-items-center gap-2">
+                                <span>Ver reportes generados</span>
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <!-- Maqueta de Reportes -->
+                            <div class="tab-mockup p-3 rounded-3 border bg-light shadow-sm">
+                                <h4 class="h6 fw-bold text-navy mb-3"><i class="bi bi-bar-chart-fill me-2 text-accent"></i>Valorización por Rubro</h4>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between fs-xs fw-semibold mb-1">
+                                        <span>Abarrotes</span>
+                                        <span>S/ 576.00 (38%)</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 38%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between fs-xs fw-semibold mb-1">
+                                        <span>Bebidas</span>
+                                        <span>S/ 216.00 (22%)</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-success" style="width: 22%"></div>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2 pt-2">
+                                    <button class="btn btn-sm btn-outline-success w-50 disabled"><i class="bi bi-filetype-csv me-1"></i>Excel CSV</button>
+                                    <button class="btn btn-sm btn-outline-primary w-50 disabled"><i class="bi bi-filetype-json me-1"></i>JSON</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 6. CÓMO FUNCIONA (SECUENCIA CRONOLÓGICA EN 3 PASOS REALES)                -->
+    <!-- ========================================================================= -->
+    <section id="como-funciona" class="section-padding py-5">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-5">
+                <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                    Paso a Paso
+                </span>
+                <h2 class="section-title h2 fw-bold text-brand mb-2">Comienza a controlar tu stock hoy mismo</h2>
+                <p class="section-lead text-muted-custom">
+                    Un proceso real y sin trabas que dominarás en solo 3 pasos.
+                </p>
+            </div>
+
+            <div class="row g-4 position-relative">
+                
+                <!-- Paso 1 -->
+                <div class="col-12 col-md-4">
+                    <div class="step-card p-4 rounded-4 border h-100 text-center">
+                        <div class="step-number-circle mx-auto mb-3 bg-brand text-white fw-bold fs-4">1</div>
+                        <div class="step-icon mb-3 text-accent fs-1">
+                            <i class="bi bi-journal-plus" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-brand mb-2">Registra tus productos</h3>
+                        <p class="text-muted-custom small mb-0">
+                            Ingresa el nombre, precio de venta al público y stock mínimo de alerta. Puedes empezar con los productos de mayor rotación en tu mostrador.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="col-12 col-md-4">
+                    <div class="step-card p-4 rounded-4 border h-100 text-center">
+                        <div class="step-number-circle mx-auto mb-3 bg-brand text-white fw-bold fs-4">2</div>
+                        <div class="step-icon mb-3 text-accent fs-1">
+                            <i class="bi bi-cart-check-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-brand mb-2">Controla entradas y salidas</h3>
+                        <p class="text-muted-custom small mb-0">
+                            Suma mercadería cuando llegue tu distribuidor y descuenta cuando hagas ventas. Todo con un solo clic y sin hacer cuentas manuales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="col-12 col-md-4">
+                    <div class="step-card p-4 rounded-4 border h-100 text-center">
+                        <div class="step-number-circle mx-auto mb-3 bg-brand text-white fw-bold fs-4">3</div>
+                        <div class="step-icon mb-3 text-accent fs-1">
+                            <i class="bi bi-shield-check" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-brand mb-2">Recibe alertas de stock bajo</h3>
+                        <p class="text-muted-custom small mb-0">
+                            El sistema resalta automáticamente los productos críticos en rojo. Sabrás de inmediato qué pedir a tus proveedores para no perder ventas.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Llamado a la acción rápido intermedio -->
+            <div class="text-center mt-5">
+                <a href="#contacto" class="btn btn-accent btn-md d-inline-flex align-items-center gap-2 shadow-sm">
+                    <span>Empezar ahora gratis</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. CASOS DE ÉXITO EN TARJETAS COMPACTAS                                  -->
+    <!-- ========================================================================= -->
+    <section id="testimonios" class="section-padding py-5">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-5">
+                <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                    Casos de Éxito
+                </span>
+                <h2 class="section-title h2 fw-bold text-brand mb-2">Lo que dicen los dueños de negocios</h2>
+                <p class="section-lead text-muted-custom">
+                    Testimonios reales de comerciantes que transformaron su control de existencias.
+                </p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <article class="success-card h-100 p-3 p-lg-4 rounded-4 border bg-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="success-quote-icon"><i class="bi bi-quote" aria-hidden="true"></i></span>
+                            <span class="rating-stars text-warning fs-xs" aria-label="5 de 5 estrellas">
+                                <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <blockquote class="mb-3">
+                            <p class="fs-sm text-brand fst-italic mb-0">“Con StockPro sé qué mercadería pedir y cuánto vale mi bodega cada fin de mes.”</p>
+                        </blockquote>
+                        <div class="success-author pt-3 border-top">
+                            <strong class="text-brand d-block fs-sm">Rosa Quispe Huamán</strong>
+                            <span class="fs-xs text-muted-custom">Bodega El Ahorro · Lima</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-4">
+                    <article class="success-card h-100 p-3 p-lg-4 rounded-4 border bg-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="success-quote-icon"><i class="bi bi-quote" aria-hidden="true"></i></span>
+                            <span class="rating-stars text-warning fs-xs" aria-label="5 de 5 estrellas">
+                                <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <blockquote class="mb-3">
+                            <p class="fs-sm text-brand fst-italic mb-0">“Las alertas de stock bajo me ayudan a mantener los productos que mis clientes buscan.”</p>
+                        </blockquote>
+                        <div class="success-author pt-3 border-top">
+                            <strong class="text-brand d-block fs-sm">Carlos Mendoza Vargas</strong>
+                            <span class="fs-xs text-muted-custom">Minimarket La Esquina · Arequipa</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-4">
+                    <article class="success-card h-100 p-3 p-lg-4 rounded-4 border bg-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="success-quote-icon"><i class="bi bi-quote" aria-hidden="true"></i></span>
+                            <span class="rating-stars text-warning fs-xs" aria-label="5 de 5 estrellas">
+                                <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <blockquote class="mb-3">
+                            <p class="fs-sm text-brand fst-italic mb-0">“Registré mis productos en minutos desde el celular y exporté mi primer reporte a Excel.”</p>
+                        </blockquote>
+                        <div class="success-author pt-3 border-top">
+                            <strong class="text-brand d-block fs-sm">Maribel Flores Díaz</strong>
+                            <span class="fs-xs text-muted-custom">Abarrotes Don Pepe · Trujillo</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 8. PREGUNTAS FRECUENTES (ACCORDION DE BOOTSTRAP)                          -->
+    <!-- ========================================================================= -->
+    <section id="preguntas" class="section-padding py-5 bg-surface-alt">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="text-center max-w-xl mx-auto mb-5">
+                <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                    Dudas Resueltas
+                </span>
+                <h2 class="section-title h2 fw-bold text-brand mb-2">Preguntas Frecuentes</h2>
+                <p class="section-lead text-muted-custom">
+                    Respuestas directas a las consultas más comunes de nuestros usuarios.
+                </p>
+            </div>
+
+            <div class="accordion accordion-custom max-w-2xl mx-auto" id="accordionFAQ">
+                
+                <!-- Pregunta 1 -->
+                <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+                    <h3 class="accordion-header" id="headingUno">
+                        <button class="accordion-button fw-bold text-brand collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUno" aria-expanded="false" aria-controls="collapseUno">
+                            1. ¿Necesito instalar algún programa en mi computadora?
+                        </button>
+                    </h3>
+                    <div id="collapseUno" class="accordion-collapse collapse" aria-labelledby="headingUno" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted-custom fs-sm">
+                            No. StockPro es una aplicación web moderna. Solo necesitas abrir el navegador (Chrome, Edge, Safari o Firefox) en tu computadora, laptop, teléfono o tablet. No requiere descargas pesadas ni configuraciones complejas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+                    <h3 class="accordion-header" id="headingDos">
+                        <button class="accordion-button fw-bold text-brand collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDos" aria-expanded="false" aria-controls="collapseDos">
+                            2. ¿Puedo usar StockPro desde mi teléfono móvil?
+                        </button>
+                    </h3>
+                    <div id="collapseDos" class="accordion-collapse collapse" aria-labelledby="headingDos" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted-custom fs-sm">
+                            Sí, totalmente. La interfaz es 100% responsive y está diseñada para ser operada con una sola mano en pantallas táctiles, ideal para actualizar el stock mientras caminas por los pasillos de tu tienda.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+                    <h3 class="accordion-header" id="headingTres">
+                        <button class="accordion-button fw-bold text-brand collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTres" aria-expanded="false" aria-controls="collapseTres">
+                            3. ¿Puedo probar el sistema antes de realizar algún pago?
+                        </button>
+                    </h3>
+                    <div id="collapseTres" class="accordion-collapse collapse" aria-labelledby="headingTres" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted-custom fs-sm">
+                            Sí. Ofrecemos 14 días de prueba gratuita con todas las funciones desbloqueadas. No solicitamos tarjetas de crédito ni datos bancarios para comenzar. Si al terminar la prueba no deseas continuar, no se realiza ningún cobro.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+                    <h3 class="accordion-header" id="headingCuatro">
+                        <button class="accordion-button fw-bold text-brand collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCuatro" aria-expanded="false" aria-controls="collapseCuatro">
+                            4. ¿Cómo descargo o exporto mis datos para mi contador?
+                        </button>
+                    </h3>
+                    <div id="collapseCuatro" class="accordion-collapse collapse" aria-labelledby="headingCuatro" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted-custom fs-sm">
+                            Desde el menú de herramientas o desde el modal de resumen puedes pulsar "Exportar a CSV" o "Exportar a JSON". El archivo se descarga al instante con codificación UTF-8, listo para ser abierto en Microsoft Excel con todos los caracteres en español intactos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="accordion-item border mb-0 rounded-3 overflow-hidden">
+                    <h3 class="accordion-header" id="headingCinco">
+                        <button class="accordion-button fw-bold text-brand collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCinco" aria-expanded="false" aria-controls="collapseCinco">
+                            5. ¿Mis datos están seguros si cierro el navegador?
+                        </button>
+                    </h3>
+                    <div id="collapseCinco" class="accordion-collapse collapse" aria-labelledby="headingCinco" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted-custom fs-sm">
+                            Sí. StockPro guarda automáticamente cada registro, movimiento o edición en el almacenamiento persistente (`localStorage`) de tu navegador. Puedes cerrar la pestaña, reiniciar el equipo y tus productos seguirán disponibles de forma inmediata.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 9. CONTACTO Y REGISTRO (FORMULARIO CON VALIDACIÓN EN VIVO)                -->
+    <!-- ========================================================================= -->
+    <section id="contacto" class="section-padding py-5">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="row g-5 align-items-center">
+                
+                <!-- Columna Izquierda: Información de Contacto -->
+                <div class="col-12 col-lg-5">
+                    <span class="badge-tag d-inline-block px-3 py-1 rounded-pill mb-2 fs-xs fw-semibold text-uppercase">
+                        Atención Personalizada
+                    </span>
+                    <h2 class="h2 fw-bold text-brand mb-3">Empieza tu prueba gratis o solicita una asesoría</h2>
+                    <p class="text-muted-custom mb-4">
+                        Completa el formulario y uno de nuestros especialistas se comunicará contigo vía WhatsApp en menos de 15 minutos para ayudarte a dar de alta tus primeros productos.
+                    </p>
+
+                    <div class="contact-info-list d-flex flex-column gap-3 mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="contact-icon-box bg-accent text-brand rounded-circle">
+                                <i class="bi bi-whatsapp fs-5"></i>
+                            </div>
+                            <div>
+                                <span class="fs-xs text-muted-custom d-block">WhatsApp de Soporte</span>
+                                <strong class="text-brand">+51 987 654 321</strong>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="contact-icon-box bg-navy-subtle text-navy rounded-circle">
+                                <i class="bi bi-envelope-fill fs-5"></i>
+                            </div>
+                            <div>
+                                <span class="fs-xs text-muted-custom d-block">Correo Electrónico</span>
+                                <strong class="text-brand">contacto@stockpro.pe</strong>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="contact-icon-box bg-success-subtle text-success rounded-circle">
+                                <i class="bi bi-clock-fill fs-5"></i>
+                            </div>
+                            <div>
+                                <span class="fs-xs text-muted-custom d-block">Horario de Atención</span>
+                                <strong class="text-brand">Lunes a Sábado: 8:00 am - 8:00 pm</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario con Validación Reactiva -->
+                <div class="col-12 col-lg-7">
+                    <div class="contact-card p-4 p-md-5 rounded-4 border bg-card shadow-sm">
+                        <h3 class="h5 fw-bold text-brand mb-1">Solicita tu acceso inmediato</h3>
+                        <p class="text-muted-custom small mb-4">Completa tus datos para activar tu cuenta de demostración.</p>
+
+                        <form id="formContactoLanding" novalidate>
+                            
+                            <div class="row g-3">
+                                
+                                <!-- Nombre completo -->
+                                <div class="col-12 col-sm-6">
+                                    <label for="inputContactoNombre" class="form-label fs-xs fw-bold">
+                                        Nombre y Apellido <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="inputContactoNombre" placeholder="Ej: Juan Quispe" required autocomplete="name">
+                                    <div class="invalid-feedback" id="feedbackNombre">
+                                        Ingrese su nombre completo (mínimo 3 caracteres).
+                                    </div>
+                                </div>
+
+                                <!-- Correo electrónico -->
+                                <div class="col-12 col-sm-6">
+                                    <label for="inputContactoEmail" class="form-label fs-xs fw-bold">
+                                        Correo Electrónico <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email" class="form-control" id="inputContactoEmail" placeholder="juan@gmail.com" required autocomplete="email">
+                                    <div class="invalid-feedback" id="feedbackEmail">
+                                        Ingrese un correo electrónico válido.
+                                    </div>
+                                </div>
+
+                                <!-- Teléfono / WhatsApp -->
+                                <div class="col-12 col-sm-6">
+                                    <label for="inputContactoTelefono" class="form-label fs-xs fw-bold">
+                                        Teléfono / WhatsApp <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text contact-country-code">+51</span>
+                                        <input type="tel" class="form-control" id="inputContactoTelefono" placeholder="987654321" required maxlength="9" autocomplete="tel">
+                                    </div>
+                                    <div class="invalid-feedback d-block" id="feedbackTelefono" style="display: none !important;">
+                                        Ingrese un celular peruano de 9 dígitos.
+                                    </div>
+                                </div>
+
+                                <!-- Tipo de Negocio -->
+                                <div class="col-12 col-sm-6">
+                                    <label for="selectContactoTipo" class="form-label fs-xs fw-bold">
+                                        Tipo de Negocio <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-select" id="selectContactoTipo" required>
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="Bodega">Bodega de Abarrotes</option>
+                                        <option value="Minimarket">Minimarket</option>
+                                        <option value="Bazar">Bazar o Librería</option>
+                                        <option value="Distribuidora">Distribuidora / Mayorista</option>
+                                        <option value="Otro">Otro tipo de comercio</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Seleccione el tipo de su negocio.
+                                    </div>
+                                </div>
+
+                                <!-- Mensaje / Consulta -->
+                                <div class="col-12">
+                                    <label for="inputContactoMensaje" class="form-label fs-xs fw-bold">
+                                        Mensaje o Consulta (Opcional)
+                                    </label>
+                                    <textarea class="form-control" id="inputContactoMensaje" rows="3" placeholder="¿Cuántos productos manejas aproximadamente o qué dudas tienes?"></textarea>
+                                </div>
+
+                                <!-- Botón Submit -->
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-accent btn-md w-100 d-flex align-items-center justify-content-center gap-2 shadow-sm" id="btnEnviarContacto">
+                                        <i class="bi bi-send-fill" aria-hidden="true"></i>
+                                        <span class="fw-bold">Enviar solicitud y probar gratis</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 10. LLAMADA FINAL A LA ACCIÓN (CTA DE ALTO IMPACTO)                       -->
+    <!-- ========================================================================= -->
+    <section class="final-cta py-5" aria-label="Llamada final a la acción">
+        <div class="container px-3 px-lg-4 text-center">
+            <div class="max-w-2xl mx-auto py-4">
+                <span class="badge badge-accent mb-3 px-3 py-1 text-uppercase fs-xs">Comienza hoy mismo</span>
+                <h2 class="display-6 fw-extrabold text-white mb-3">
+                    Deja de perder dinero por desorden en tu inventario
+                </h2>
+                <p class="lead text-white-50 mb-4 fs-6">
+                    Únete a más de 500 bodegueros y comerciantes que ya tienen el control total de sus existencias, alertas y ganancias.
+                </p>
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                    <a href="#contacto" class="btn btn-accent btn-lg px-4 d-inline-flex align-items-center justify-content-center gap-2 shadow-lg">
+                        <i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i>
+                        <span>Comenzar prueba gratis de 14 días</span>
+                    </a>
+                    <a href="index.html" class="btn btn-outline-light btn-lg px-4 d-inline-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                        <span>Explorar el Sistema StockPro</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 11. FOOTER INSTITUCIONAL                                                  -->
+    <!-- ========================================================================= -->
+    <footer class="footer-landing py-5 border-top">
+        <div class="container px-3 px-lg-4">
+            <div class="row g-4 justify-content-between">
+                
+                <!-- Columna 1: Marca y descripción -->
+                <div class="col-12 col-md-5">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-box-seam-fill text-accent fs-4" aria-hidden="true"></i>
+                        <span class="fw-bold fs-4 text-brand">Stock<span class="text-accent">Pro</span></span>
+                    </div>
+                    <p class="text-muted-custom fs-sm mb-3">
+                        El sistema de control de existencias y valorización para pequeñas empresas más confiable, simple y rápido del mercado peruano.
+                    </p>
+                
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="col-6 col-md-3">
+                    <h4 class="fs-sm fw-bold text-brand text-uppercase mb-3">Navegación</h4>
+                    <ul class="list-unstyled fs-sm d-flex flex-column gap-2 mb-0">
+                        <li><a href="#beneficios" class="footer-link">Beneficios</a></li>
+                        <li><a href="#funciones" class="footer-link">Funciones</a></li>
+                        <li><a href="#como-funciona" class="footer-link">Cómo funciona</a></li>
+                        <li><a href="#preguntas" class="footer-link">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Redes Sociales y Soporte -->
+                <div class="col-6 col-md-3">
+                    <h4 class="fs-sm fw-bold text-brand text-uppercase mb-3">Conéctate</h4>
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp de StockPro">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook de StockPro">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram de StockPro">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn de StockPro">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                    <span class="fs-xs text-muted-custom d-block">Lima, Perú &bull; Soporte 24/7</span>
+                </div>
+
+            </div>
+
+            <hr class="my-4 border-secondary-subtle">
+
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2 fs-xs text-muted-custom text-center text-sm-start">
+                <span>&copy; 2026 StockPro - Todos los derechos reservados.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL DE CONFIRMACIÓN DE ENVÍO DE FORMULARIO                              -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalContactoExito" tabindex="-1" aria-labelledby="modalContactoExitoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-navy text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalContactoExitoTitulo">
+                        <i class="bi bi-send-fill text-accent" id="iconoEstadoContacto" aria-hidden="true"></i>
+                        <span id="textoEstadoContacto">Enviando tu solicitud...</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white d-none" id="btnCerrarContacto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <div id="estadoEnviandoContacto" role="status" aria-live="polite">
+                        <div class="modal-success-icon mx-auto mb-3 bg-accent-subtle text-accent rounded-circle d-flex align-items-center justify-content-center">
+                            <span class="spinner-border" aria-hidden="true"></span>
+                        </div>
+                        <h4 class="h5 fw-bold text-brand mb-2">Estamos procesando tu información</h4>
+                        <p class="text-muted-custom small mb-0">Espera un momento mientras preparamos tu solicitud de prueba gratis.</p>
+                    </div>
+                    <div id="estadoExitoContacto" class="d-none">
+                        <div class="modal-success-icon mx-auto mb-3 bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-check-lg fs-1" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="h5 fw-bold text-brand mb-2">¡Gracias por tu interés en StockPro!</h4>
+                        <p class="text-muted-custom small mb-3">
+                            Tu solicitud quedó lista en esta demostración. Nos alegra que quieras probar StockPro.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer bg-surface-alt px-4 py-2 d-none" id="footerExitoContacto">
+                    <button type="button" class="btn btn-navy btn-sm w-100" data-bs-dismiss="modal">
+                        ¡Entendido, gracias!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- BOTÓN FLOTANTE: VOLVER ARRIBA                                            -->
+    <!-- ========================================================================= -->
+    <button type="button" class="btn-back-to-top" id="btnVolverArriba" aria-label="Volver arriba de la página" title="Volver al inicio">
+        <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Bootstrap 5.3.3 Bundle con Popper por CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- JavaScript Vanilla Puro de la Landing Page -->
+    <script src="js/main.js"></script>
+</body>
+</html>

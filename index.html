@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StockPro - Sistema de Inventario para pequeños negocios.">
+    <title>StockPro - Sistema de Inventario</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 CSS por CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons 1.11.3 por CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Enlace de accesibilidad: Saltar al contenido principal -->
+    <a href="#main-content" class="skip-to-content visually-hidden-focusable">Saltar al contenido principal</a>
+
+    <!-- 1. NAVBAR FIJA OSCURA -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark-navy fixed-top shadow-sm" aria-label="Navegación principal">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                    <div class="brand-icon-wrapper">
+                        <i class="bi bi-box-seam-fill text-accent fs-4" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <span class="fw-bold tracking-tight text-white fs-5">StockPro</span>
+                        <span class="badge badge-accent ms-1 d-none d-sm-inline-block">Inventario</span>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido" aria-controls="navbarContenido" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContenido">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+                        <li class="nav-item">
+                            <span class="nav-link active px-2 text-white-50 small">
+                                <i class="bi bi-shop me-1 text-accent" aria-hidden="true"></i>
+                                Control de Stock para Bodegas y Minimarkets
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <!-- Botón para ver resumen general -->
+                        <button type="button" class="btn btn-outline-light btn-sm d-flex align-items-center gap-2" id="btnAbrirResumen" data-bs-toggle="modal" data-bs-target="#modalResumen" aria-label="Abrir resumen del inventario">
+                            <i class="bi bi-bar-chart-line-fill text-accent" aria-hidden="true"></i>
+                            <span>Resumen</span>
+                        </button>
+
+                        <!-- Menú desplegable de herramientas y exportación -->
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center gap-2" type="button" id="dropdownHerramientas" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-gear-fill" aria-hidden="true"></i>
+                                <span>Herramientas</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownHerramientas">
+                                <li><h6 class="dropdown-header text-uppercase fs-xs">Exportar datos</h6></li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2" type="button" id="btnExportarCSV">
+                                        <i class="bi bi-filetype-csv text-success" aria-hidden="true"></i>
+                                        <span>Exportar a CSV (Excel)</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2" type="button" id="btnExportarJSON">
+                                        <i class="bi bi-filetype-json text-primary" aria-hidden="true"></i>
+                                        <span>Exportar a JSON</span>
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header text-uppercase fs-xs">Mantenimiento</h6></li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 text-warning" type="button" id="btnMenuRestablecer">
+                                        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
+                                        <span>Restablecer datos demo</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item d-flex align-items-center gap-2 text-danger" type="button" id="btnMenuVaciar">
+                                        <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                                        <span>Vaciar inventario</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Botón principal: Nuevo producto -->
+                        <button type="button" class="btn btn-accent btn-sm d-flex align-items-center gap-2" id="btnAbrirModalNuevo" data-bs-toggle="modal" data-bs-target="#modalProducto" aria-label="Registrar un nuevo producto">
+                            <i class="bi bi-plus-circle-fill" aria-hidden="true"></i>
+                            <span class="fw-semibold">Nuevo producto</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="main-content" class="main-wrapper">
+        <div class="container-fluid px-3 px-lg-4">
+
+            <!-- 2. BANNER DE ALERTA DESTACADO (STOCK BAJO) -->
+            <section id="bannerAlertaStockBajo" class="alert alert-danger d-none shadow-sm border-0 border-start border-danger border-4 mb-4" role="alert" aria-live="polite">
+                <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="alert-icon-circle bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                            <i class="bi bi-exclamation-triangle-fill fs-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <h2 class="alert-heading h6 fw-bold mb-0">¡Alerta de Reposición Inmediata!</h2>
+                                <span class="badge bg-danger rounded-pill fs-xs" id="alertaBadgeContador">0 productos</span>
+                            </div>
+                            <p class="mb-2 text-dark-emphasis small" id="alertaStockTexto">
+                                Los siguientes artículos han alcanzado su nivel crítico y requieren reabastecimiento:
+                            </p>
+                            <div class="d-flex flex-wrap gap-2" id="alertaListaNombres" aria-live="polite">
+                                <!-- Los productos críticos se renderizan uno por uno -->
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm text-nowrap d-flex align-items-center gap-1 shadow-sm" id="btnVerSoloStockBajo">
+                        <i class="bi bi-funnel-fill" aria-hidden="true"></i>
+                        <span>Ver solo stock bajo</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. DASHBOARD CON 4 TARJETAS DE RESUMEN (KPIS) -->
+            <section aria-labelledby="tituloDashboard" class="mb-4">
+                <h2 id="tituloDashboard" class="visually-hidden">Resumen del Inventario</h2>
+                <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-xl-4">
+                    
+                    <!-- Tarjeta 1: Total de productos -->
+                    <div class="col">
+                        <div class="card h-100 card-kpi border-0 shadow-sm">
+                            <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-uppercase tracking-wider text-muted fw-semibold fs-xs d-block mb-1">Total Productos</span>
+                                    <span class="h3 fw-bold mb-0 text-navy" id="kpiTotalProductos">0</span>
+                                    <small class="text-muted d-block mt-1">Registrados en catálogo</small>
+                                </div>
+                                <div class="kpi-icon-box bg-navy-subtle text-navy rounded-3">
+                                    <i class="bi bi-boxes fs-3" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Unidades en stock -->
+                    <div class="col">
+                        <div class="card h-100 card-kpi border-0 shadow-sm">
+                            <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-uppercase tracking-wider text-muted fw-semibold fs-xs d-block mb-1">Unidades en Stock</span>
+                                    <span class="h3 fw-bold mb-0 text-navy" id="kpiTotalUnidades">0</span>
+                                    <small class="text-muted d-block mt-1">Existencias físicas</small>
+                                </div>
+                                <div class="kpi-icon-box bg-info-subtle text-info-emphasis rounded-3">
+                                    <i class="bi bi-layers-fill fs-3" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Valor del inventario -->
+                    <div class="col">
+                        <div class="card h-100 card-kpi border-0 shadow-sm">
+                            <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-uppercase tracking-wider text-muted fw-semibold fs-xs d-block mb-1">Valor Total (S/)</span>
+                                    <span class="h3 fw-bold mb-0 text-navy" id="kpiValorTotal">S/ 0.00</span>
+                                    <small class="text-muted d-block mt-1">Precio x Stock actual</small>
+                                </div>
+                                <div class="kpi-icon-box bg-success-subtle text-success rounded-3">
+                                    <i class="bi bi-cash-stack fs-3" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Productos con stock bajo -->
+                    <div class="col">
+                        <div class="card h-100 card-kpi border-0 shadow-sm">
+                            <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <span class="text-uppercase tracking-wider text-muted fw-semibold fs-xs d-block mb-1">Stock Bajo / Crítico</span>
+                                    <span class="h3 fw-bold mb-0 text-danger" id="kpiStockBajo">0</span>
+                                    <small class="text-muted d-block mt-1">Requieren atención</small>
+                                </div>
+                                <div class="kpi-icon-box bg-danger-subtle text-danger rounded-3">
+                                    <i class="bi bi-exclamation-octagon-fill fs-3" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 4. PANEL: VALOR POR CATEGORÍA CON BARRAS DE PROGRESO -->
+            <section class="card border-0 shadow-sm mb-4" aria-labelledby="tituloValorCategorias">
+                <div class="card-header bg-white border-0 pt-3 pb-2 px-3 px-md-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-pie-chart-fill text-accent fs-5" aria-hidden="true"></i>
+                        <h2 id="tituloValorCategorias" class="h6 fw-bold mb-0 text-navy">Distribución y Valor por Categoría</h2>
+                    </div>
+                    <span class="badge bg-light text-secondary border fs-xs">Actualización en vivo</span>
+                </div>
+                <div class="card-body px-3 px-md-4 pt-1 pb-3">
+                    <div class="row g-3" id="contenedorProgresoCategorias">
+                        <!-- Renderizado dinámicamente con JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. BARRA DE FILTROS Y HERRAMIENTAS -->
+            <section class="card border-0 shadow-sm mb-4" aria-labelledby="tituloFiltros">
+                <div class="card-body p-3 p-md-4">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-funnel text-navy fs-5" aria-hidden="true"></i>
+                            <h2 id="tituloFiltros" class="h6 fw-bold mb-0 text-navy">Filtros y Búsqueda</h2>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-light text-dark border px-2 py-1 fs-xs fw-semibold" id="contadorProductos" aria-live="polite">
+                                Mostrando 0 de 0 productos
+                            </span>
+                            <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1" id="btnLimpiarFiltros" title="Restablecer todos los filtros">
+                                <i class="bi bi-x-circle" aria-hidden="true"></i>
+                                <span class="d-none d-sm-inline">Limpiar filtros</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-end">
+                        
+                        <!-- Buscador por nombre o código con botón de limpiar -->
+                        <div class="col-12 col-md-4 col-xl-3">
+                            <label for="inputBusqueda" class="form-label fs-xs fw-semibold text-uppercase text-muted mb-1">
+                                Buscar producto
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 text-muted">
+                                    <i class="bi bi-search" aria-hidden="true"></i>
+                                </span>
+                                <input type="search" class="form-control border-start-0 ps-0" id="inputBusqueda" placeholder="Nombre o código..." autocomplete="off">
+                                <button class="btn btn-outline-secondary border" type="button" id="btnLimpiarBusqueda" title="Borrar texto de búsqueda" aria-label="Limpiar campo de búsqueda">
+                                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Select de categoría -->
+                        <div class="col-12 col-sm-6 col-md-3 col-xl-2">
+                            <label for="selectCategoria" class="form-label fs-xs fw-semibold text-uppercase text-muted mb-1">
+                                Categoría
+                            </label>
+                            <select class="form-select" id="selectCategoria">
+                                <option value="todas" selected>Todas las categorías</option>
+                                <option value="Abarrotes">Abarrotes</option>
+                                <option value="Bebidas">Bebidas</option>
+                                <option value="Lácteos">Lácteos</option>
+                                <option value="Limpieza">Limpieza</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro por estado con botones toggle (btn-group) -->
+                        <div class="col-12 col-sm-6 col-md-5 col-xl-4">
+                            <label class="form-label fs-xs fw-semibold text-uppercase text-muted mb-1 d-block">
+                                Estado de Existencia
+                            </label>
+                            <div class="btn-group w-100" role="group" aria-label="Filtro por estado de stock" id="grupoFiltroEstado">
+                                <input type="radio" class="btn-check" name="filtroEstado" id="estadoTodos" value="todos" checked autocomplete="off">
+                                <label class="btn btn-outline-primary btn-sm" for="estadoTodos">Todos</label>
+
+                                <input type="radio" class="btn-check" name="filtroEstado" id="estadoDisponible" value="disponible" autocomplete="off">
+                                <label class="btn btn-outline-success btn-sm" for="estadoDisponible">Disponible</label>
+
+                                <input type="radio" class="btn-check" name="filtroEstado" id="estadoStockBajo" value="stock_bajo" autocomplete="off">
+                                <label class="btn btn-outline-danger btn-sm" for="estadoStockBajo">Stock bajo</label>
+
+                                <input type="radio" class="btn-check" name="filtroEstado" id="estadoAgotado" value="agotado" autocomplete="off">
+                                <label class="btn btn-outline-secondary btn-sm" for="estadoAgotado">Agotado</label>
+                            </div>
+                        </div>
+
+                        <!-- Ordenar por -->
+                        <div class="col-12 col-sm-6 col-md-3 col-xl-2">
+                            <label for="selectOrden" class="form-label fs-xs fw-semibold text-uppercase text-muted mb-1">
+                                Ordenar por
+                            </label>
+                            <select class="form-select form-select-sm" id="selectOrden">
+                                <option value="nombre_asc">Nombre (A - Z)</option>
+                                <option value="nombre_desc">Nombre (Z - A)</option>
+                                <option value="precio_asc">Precio (Menor a Mayor)</option>
+                                <option value="precio_desc">Precio (Mayor a Menor)</option>
+                                <option value="stock_asc">Stock (Menor a Mayor)</option>
+                                <option value="stock_desc">Stock (Mayor a Menor)</option>
+                            </select>
+                        </div>
+
+                        <!-- Botón para abrir panel offcanvas de rango de precios -->
+                        <div class="col-12 col-sm-6 col-md-3 col-xl-1">
+                            <button type="button" class="btn btn-outline-navy btn-sm w-100 d-flex align-items-center justify-content-center gap-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFiltros" aria-controls="offcanvasFiltros" id="btnAbrirOffcanvasFiltros">
+                                <i class="bi bi-sliders2" aria-hidden="true"></i>
+                                <span>Más</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. TABLA DE PRODUCTOS CON PAGINACIÓN -->
+            <section class="card border-0 shadow-sm mb-4" aria-labelledby="tituloTabla">
+                <div class="card-header bg-white border-bottom py-3 px-3 px-md-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-table text-navy fs-5" aria-hidden="true"></i>
+                        <h2 id="tituloTabla" class="h6 fw-bold mb-0 text-navy">Listado de Productos</h2>
+                    </div>
+                    <small class="text-muted fs-xs">8 productos por página</small>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="tablaProductos">
+                        <thead class="table-light fs-xs text-uppercase text-muted">
+                            <tr>
+                                <th scope="col" class="ps-3 ps-md-4">Código</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col" class="text-end">Precio (S/)</th>
+                                <th scope="col" class="text-center">Stock Actual</th>
+                                <th scope="col" class="text-center">Stock Mínimo</th>
+                                <th scope="col" class="text-center">Estado</th>
+                                <th scope="col" class="text-end pe-3 pe-md-4">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyProductos">
+                            <!-- Filas inyectadas dinámicamente mediante delegación de eventos -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Estado vacío 1: Sin productos en el inventario -->
+                <div id="estadoVacioInventario" class="p-5 text-center d-none">
+                    <div class="empty-icon-box mx-auto mb-3 text-muted">
+                        <i class="bi bi-box2 fs-1" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-navy mb-2">Aún no hay productos registrados</h3>
+                    <p class="text-muted small mb-3 max-w-sm mx-auto">
+                        Comienza agregando tu primer producto para llevar el control inteligente de tu stock y precios.
+                    </p>
+                    <button type="button" class="btn btn-accent btn-sm d-inline-flex align-items-center gap-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalProducto">
+                        <i class="bi bi-plus-circle-fill" aria-hidden="true"></i>
+                        <span>Agregar primer producto</span>
+                    </button>
+                </div>
+
+                <!-- Estado vacío 2: Sin coincidencias con los filtros -->
+                <div id="estadoVacioFiltros" class="p-5 text-center d-none">
+                    <div class="empty-icon-box mx-auto mb-3 text-muted">
+                        <i class="bi bi-search fs-1" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-navy mb-2">No se encontraron productos</h3>
+                    <p class="text-muted small mb-3 max-w-sm mx-auto">
+                        Ningún producto coincide con los filtros o criterios de búsqueda ingresados.
+                    </p>
+                    <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2" id="btnRestablecerFiltrosVacio">
+                        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
+                        <span>Restablecer filtros</span>
+                    </button>
+                </div>
+
+                <!-- Footer de la tabla con controles de paginación -->
+                <div class="card-footer bg-white border-top py-3 px-3 px-md-4 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" id="contenedorPaginacion">
+                    <div class="text-muted fs-xs" id="infoPaginacion">
+                        Página 1 de 1
+                    </div>
+                    <nav aria-label="Navegación de páginas de productos">
+                        <ul class="pagination pagination-sm mb-0" id="listaPaginacion">
+                            <!-- Botones de página generados dinámicamente -->
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 7. FOOTER INSTITUCIONAL -->
+    <footer class="bg-dark-navy text-white-50 py-4 mt-auto border-top border-secondary-subtle">
+        <div class="container-fluid px-3 px-lg-4 text-center">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+                <div class="d-flex align-items-center justify-content-center gap-2">
+                    <i class="bi bi-box-seam text-accent fs-5" aria-hidden="true"></i>
+                    <span class="text-white fw-bold">StockPro</span>
+                    <span class="mx-1">|</span>
+                    <span>Sistema de Inventario para Pequeños Negocios</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- OFF-CANVAS: MÁS FILTROS (RANGO DE PRECIO)                                  -->
+    <!-- ========================================================================= -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasFiltros" aria-labelledby="tituloOffcanvasFiltros">
+        <div class="offcanvas-header bg-navy text-white">
+            <h3 class="offcanvas-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="tituloOffcanvasFiltros">
+                <i class="bi bi-sliders2 text-accent" aria-hidden="true"></i>
+                <span>Más Filtros de Inventario</span>
+            </h3>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar panel"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form id="formFiltroPrecio" novalidate>
+                <div class="mb-4">
+                    <h4 class="h6 fw-bold text-navy mb-3">Rango de Precio Unitario (S/)</h4>
+                    
+                    <div class="mb-3">
+                        <label for="inputPrecioMin" class="form-label small fw-semibold">Precio Mínimo (S/)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">S/</span>
+                            <input type="number" class="form-control" id="inputPrecioMin" placeholder="0.00" min="0" step="0.50">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputPrecioMax" class="form-label small fw-semibold">Precio Máximo (S/)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">S/</span>
+                            <input type="number" class="form-control" id="inputPrecioMax" placeholder="999.00" min="0" step="0.50">
+                        </div>
+                        <div class="invalid-feedback" id="feedbackPrecioRango">
+                            El precio mínimo no puede ser mayor al precio máximo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-navy btn-sm py-2 fw-semibold">
+                        <i class="bi bi-check2-circle me-1" aria-hidden="true"></i>
+                        Aplicar Filtro de Precio
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm py-2" id="btnRestablecerPrecioOffcanvas">
+                        <i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>
+                        Restablecer Rango
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 1: NUEVO / EDITAR PRODUCTO (MISMO FORMULARIO PRECARGADO)              -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-navy text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalProductoTitulo">
+                        <i class="bi bi-box-seam text-accent" aria-hidden="true"></i>
+                        <span id="textoTituloModalProducto">Nuevo Producto</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+                </div>
+
+                <form id="formProducto" novalidate>
+                    <div class="modal-body p-4">
+                        <input type="hidden" id="productoIdOculto" value="">
+
+                        <div class="row g-3">
+                            <!-- Código del producto -->
+                            <div class="col-12 col-md-4">
+                                <label for="inputCodigo" class="form-label small fw-bold">
+                                    Código <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="inputCodigo" placeholder="Ej: PROD-001" required autocomplete="off">
+                                <div class="invalid-feedback" id="feedbackCodigo">
+                                    Ingrese un código único (mínimo 3 caracteres).
+                                </div>
+                                <div class="form-text fs-xs">Identificador único en catálogo.</div>
+                            </div>
+
+                            <!-- Nombre del producto -->
+                            <div class="col-12 col-md-8">
+                                <label for="inputNombre" class="form-label small fw-bold">
+                                    Nombre del Producto <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="inputNombre" placeholder="Ej: Arroz Extra Costeño 1kg" required autocomplete="off">
+                                <div class="invalid-feedback">
+                                    El nombre es obligatorio (mínimo 3 caracteres).
+                                </div>
+                            </div>
+
+                            <!-- Categoría -->
+                            <div class="col-12 col-md-6">
+                                <label for="inputCategoria" class="form-label small fw-bold">
+                                    Categoría <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="inputCategoria" required>
+                                    <option value="" disabled selected>Seleccione una categoría...</option>
+                                    <option value="Abarrotes">Abarrotes</option>
+                                    <option value="Bebidas">Bebidas</option>
+                                    <option value="Lácteos">Lácteos</option>
+                                    <option value="Limpieza">Limpieza</option>
+                                    <option value="Snacks">Snacks</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Seleccione una categoría válida.
+                                </div>
+                            </div>
+
+                            <!-- Precio Unitario -->
+                            <div class="col-12 col-md-6">
+                                <label for="inputPrecio" class="form-label small fw-bold">
+                                    Precio Unitario (S/) <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">S/</span>
+                                    <input type="number" class="form-control" id="inputPrecio" placeholder="0.00" step="0.01" min="0.01" required>
+                                    <div class="invalid-feedback">
+                                        El precio debe ser un número mayor a 0.00.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stock Actual -->
+                            <div class="col-12 col-md-6">
+                                <label for="inputStock" class="form-label small fw-bold">
+                                    Stock Actual (Unidades) <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" id="inputStock" placeholder="0" min="0" step="1" required>
+                                <div class="invalid-feedback">
+                                    El stock debe ser un número entero mayor o igual a 0.
+                                </div>
+                            </div>
+
+                            <!-- Stock Mínimo -->
+                            <div class="col-12 col-md-6">
+                                <label for="inputStockMinimo" class="form-label small fw-bold">
+                                    Stock Mínimo de Alerta <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" id="inputStockMinimo" placeholder="5" min="0" step="1" required>
+                                <div class="invalid-feedback">
+                                    El stock mínimo debe ser un entero mayor o igual a 0.
+                                </div>
+                                <div class="form-text fs-xs">Dispara alertas si el stock es menor o igual.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-light px-4 py-3">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-accent btn-sm d-flex align-items-center gap-2" id="btnGuardarProducto">
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                            <span id="textoBotonGuardar">Guardar producto</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 2: REGISTRAR MOVIMIENTO (ENTRADA / SALIDA)                            -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalMovimiento" tabindex="-1" aria-labelledby="modalMovimientoTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-navy text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalMovimientoTitulo">
+                        <i class="bi bi-arrow-left-right text-accent" aria-hidden="true"></i>
+                        <span>Registrar Movimiento de Stock</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
+                </div>
+
+                <form id="formMovimiento" novalidate>
+                    <div class="modal-body p-4">
+                        <input type="hidden" id="movimientoProductoId" value="">
+
+                        <!-- Resumen del producto seleccionado -->
+                        <div class="p-3 bg-light rounded-3 border mb-3">
+                            <span class="fs-xs text-uppercase text-muted fw-bold d-block">Producto seleccionado</span>
+                            <h4 class="h6 fw-bold text-navy mb-1" id="movimientoProductoNombre">-</h4>
+                            <div class="d-flex align-items-center gap-3 text-muted small">
+                                <span>Código: <strong id="movimientoProductoCodigo" class="text-dark">-</strong></span>
+                                <span>Stock actual: <strong id="movimientoProductoStock" class="text-primary">-</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Tipo de movimiento -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold d-block">Tipo de Movimiento <span class="text-danger">*</span></label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <input type="radio" class="btn-check" name="tipoMovimiento" id="tipoEntrada" value="entrada" checked autocomplete="off">
+                                    <label class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2 py-2" for="tipoEntrada">
+                                        <i class="bi bi-box-arrow-in-down fs-5" aria-hidden="true"></i>
+                                        <span class="fw-semibold">Entrada (+)</span>
+                                    </label>
+                                </div>
+                                <div class="col-6">
+                                    <input type="radio" class="btn-check" name="tipoMovimiento" id="tipoSalida" value="salida" autocomplete="off">
+                                    <label class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2 py-2" for="tipoSalida">
+                                        <i class="bi bi-box-arrow-up-right fs-5" aria-hidden="true"></i>
+                                        <span class="fw-semibold">Salida (-)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="mb-3">
+                            <label for="inputCantidadMovimiento" class="form-label small fw-bold">
+                                Cantidad de Unidades <span class="text-danger">*</span>
+                            </label>
+                            <input type="number" class="form-control" id="inputCantidadMovimiento" placeholder="1" min="1" step="1" required>
+                            <div class="invalid-feedback" id="feedbackCantidadMovimiento">
+                                Ingrese una cantidad entera mayor a 0.
+                            </div>
+                        </div>
+
+                        <!-- Motivo opcional -->
+                        <div class="mb-2">
+                            <label for="inputMotivoMovimiento" class="form-label small fw-semibold">
+                                Motivo (Opcional)
+                            </label>
+                            <input type="text" class="form-control" id="inputMotivoMovimiento" placeholder="Ej: Compra a distribuidor, venta mostrador, merma...">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-light px-4 py-3">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-navy btn-sm d-flex align-items-center gap-2" id="btnGuardarMovimiento">
+                            <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                            <span>Registrar movimiento</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 3: DETALLE DEL PRODUCTO (FICHA TÉCNICA)                              -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-navy text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalDetalleTitulo">
+                        <i class="bi bi-info-circle-fill text-accent" aria-hidden="true"></i>
+                        <span>Ficha Detallada del Producto</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar ficha"></button>
+                </div>
+                <div class="modal-body p-4" id="cuerpoDetalleProducto">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+                <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+                    <span class="fs-xs text-muted">StockPro - Control de inventario</span>
+                    <button type="button" class="btn btn-navy btn-sm" data-bs-dismiss="modal">
+                        Cerrar ficha
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 4: CONFIRMACIÓN DE ELIMINACIÓN DE UN PRODUCTO                        -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalEliminarTitulo">
+                        <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                        <span>Confirmar Eliminación</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="mb-3">
+                        ¿Está completamente seguro de que desea eliminar este producto del inventario? Esta acción no se puede deshacer.
+                    </p>
+                    <div class="p-3 bg-light border border-danger-subtle rounded-3 text-center">
+                        <span class="fs-xs text-uppercase text-muted d-block">Producto a eliminar:</span>
+                        <strong class="text-danger fs-6" id="nombreProductoEliminar"></strong>
+                        <div class="text-muted small mt-1" id="codigoProductoEliminar"></div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light px-4 py-3">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm d-flex align-items-center gap-2 shadow-sm" id="btnConfirmarEliminar">
+                        <i class="bi bi-trash3-fill" aria-hidden="true"></i>
+                        <span>Eliminar producto</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 5: CONFIRMACIÓN GENERAL (VACIAR INVENTARIO / RESTABLECER DEMO)        -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalConfirmarAccion" tabindex="-1" aria-labelledby="modalConfirmarAccionTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header text-white" id="modalConfirmarAccionHeader">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalConfirmarAccionTitulo">
+                        <i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>
+                        <span id="textoTituloConfirmarAccion">Confirmación</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="mb-0" id="textoMensajeConfirmarAccion">
+                        ¿Está seguro de realizar esta acción?
+                    </p>
+                </div>
+                <div class="modal-footer bg-light px-4 py-3">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id="btnEjecutarConfirmarAccion">
+                        Confirmar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 6: RESUMEN DEL INVENTARIO (INFORMES Y VALORACIÓN)                   -->
+    <!-- ========================================================================= -->
+    <div class="modal fade" id="modalResumen" tabindex="-1" aria-labelledby="modalResumenTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-navy text-white">
+                    <h3 class="modal-title h6 fw-bold mb-0 d-flex align-items-center gap-2" id="modalResumenTitulo">
+                        <i class="bi bi-clipboard2-data-fill text-accent" aria-hidden="true"></i>
+                        <span>Informe y Resumen Global del Inventario</span>
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar resumen"></button>
+                </div>
+                <div class="modal-body p-4" id="cuerpoModalResumen">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+                <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-success btn-sm d-flex align-items-center gap-1" id="btnExportarCSVDesdeResumen">
+                            <i class="bi bi-filetype-csv" aria-hidden="true"></i>
+                            <span>Descargar CSV</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1" id="btnExportarJSONDesdeResumen">
+                            <i class="bi bi-filetype-json" aria-hidden="true"></i>
+                            <span>Descargar JSON</span>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-navy btn-sm" data-bs-dismiss="modal">
+                        Cerrar informe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- CONTENEDOR DE TOASTS FLOTANTES PARA RETROALIMENTACIÓN (BOOTSTRAP)        -->
+    <!-- ========================================================================= -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+        <div id="toastNotificacion" class="toast align-items-center border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2 py-3 px-3">
+                    <i id="toastIcono" class="bi bi-check-circle-fill fs-5" aria-hidden="true"></i>
+                    <span id="toastMensaje" class="fw-semibold small">Operación realizada con éxito.</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar notificación"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3.3 Bundle con Popper por CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Lógica de la aplicación en JavaScript Vanilla Puro -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+/* ==========================================================================
+   StockPro - Sistema de Inventario
+   Curso: Desarrollo de Interfaces I | Instituto IDAT
+   Hoja de estilos personalizada (CSS3 Puro)
+   ========================================================================== */
+
+/* 1. VARIABLES Y CONFIGURACIÓN GLOBAL */
+:root {
+    --color-navy: #14213D;
+    --color-navy-dark: #0B132B;
+    --color-navy-light: #1F3156;
+    --color-accent: #FCA311;
+    --color-accent-hover: #E5920A;
+    --color-accent-text: #14213D;
+    
+    --color-bg-body: #F4F6F9;
+    --color-bg-card: #FFFFFF;
+    
+    --color-danger: #E63946;
+    --color-danger-subtle: #FFEBEB;
+    --color-warning-subtle: #FFF8E6;
+    --color-success: #198754;
+    --color-success-subtle: #E8F5E9;
+    
+    --color-border: #E2E8F0;
+    --color-text-main: #212529;
+    --color-text-muted: #64748B;
+    
+    --shadow-soft: 0 4px 16px rgba(20, 33, 61, 0.06);
+    --shadow-card-hover: 0 8px 24px rgba(20, 33, 61, 0.12);
+    --radius-default: 10px;
+    --radius-card: 12px;
+    --transition-base: all 0.2s ease-in-out;
+}
+
+/* 2. TIPOGRAFÍA Y CUERPO */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--color-bg-body);
+    color: var(--color-text-main);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper {
+    flex: 1 0 auto;
+    padding-top: 86px; /* Espacio para compensar la navbar fija */
+    padding-bottom: 40px;
+}
+
+/* Enlace accesible para saltar directo al contenido */
+.skip-to-content {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2000;
+    padding: 10px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    font-weight: 700;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.skip-to-content:not(:focus) {
+    transform: translateY(-150%);
+}
+
+/* Foco accesible de alto contraste (WCAG 2.1 AA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--color-accent) !important;
+    outline-offset: 2px !important;
+}
+
+/* 3. COLORES Y UTILIDADES DE MARCA */
+.bg-dark-navy {
+    background-color: var(--color-navy-dark) !important;
+}
+
+.bg-navy {
+    background-color: var(--color-navy) !important;
+}
+
+.bg-navy-subtle {
+    background-color: #EBF0FA !important;
+}
+
+.text-navy {
+    color: var(--color-navy) !important;
+}
+
+.text-accent {
+    color: var(--color-accent) !important;
+}
+
+.fs-xs {
+    font-size: 0.775rem !important;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
+
+.tracking-tight {
+    letter-spacing: -0.02em;
+}
+
+.max-w-sm {
+    max-width: 420px;
+}
+
+/* Botón primario de acento (Ámbar) */
+.btn-accent {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-text);
+    font-weight: 600;
+    transition: var(--transition-base);
+}
+
+.btn-accent:hover,
+.btn-accent:focus,
+.btn-accent:active {
+    background-color: var(--color-accent-hover) !important;
+    border-color: var(--color-accent-hover) !important;
+    color: var(--color-accent-text) !important;
+    box-shadow: 0 4px 12px rgba(252, 163, 17, 0.35);
+}
+
+/* Botón azul marino */
+.btn-navy {
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    color: #FFFFFF;
+    font-weight: 500;
+    transition: var(--transition-base);
+}
+
+.btn-navy:hover,
+.btn-navy:focus,
+.btn-navy:active {
+    background-color: var(--color-navy-light) !important;
+    border-color: var(--color-navy-light) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-outline-navy {
+    color: var(--color-navy);
+    border-color: var(--color-navy);
+}
+
+.btn-outline-navy:hover,
+.btn-outline-navy:focus,
+.btn-outline-navy:active {
+    background-color: var(--color-navy);
+    color: #FFFFFF;
+}
+
+/* Badge de acento */
+.badge-accent {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+}
+
+/* 4. NAVBAR */
+.navbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+/* 5. TARJETAS DEL DASHBOARD (KPIS) */
+.card-kpi {
+    border-radius: var(--radius-card);
+    transition: var(--transition-base);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border) !important;
+}
+
+.card-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover) !important;
+}
+
+.kpi-icon-box {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* 6. BANNER DE ALERTA DE STOCK BAJO */
+#bannerAlertaStockBajo {
+    border-radius: var(--radius-card);
+    background-color: #FFF5F5;
+}
+
+.alert-icon-circle {
+    width: 40px;
+    height: 40px;
+    animation: alertPulse 2.4s infinite ease-in-out;
+}
+
+@keyframes alertPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 8px rgba(230, 57, 70, 0);
+    }
+}
+
+/* Animación y estilo para los chips de productos que aparecen uno por uno */
+.alerta-chip-item {
+    animation: chipFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alerta-chip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.15) !important;
+}
+
+@keyframes chipFadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.92);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Efecto suave para números KPI mientras se actualizan dinámicamente */
+.kpi-counter-updating {
+    color: var(--color-accent) !important;
+    transition: color 0.15s ease;
+}
+
+/* 7. TARJETAS DE CONTENIDO GENERAL */
+.card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border) !important;
+    background-color: var(--color-bg-card);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 8. BARRAS DE PROGRESO DE CATEGORÍA */
+.category-progress-item {
+    background: #FAFAFA;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 12px;
+    transition: var(--transition-base);
+}
+
+.category-progress-item:hover {
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.progress {
+    height: 8px;
+    background-color: #E2E8F0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* 9. TABLA DE PRODUCTOS */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #F8FAFC;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    white-space: nowrap;
+}
+
+.table td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #EDF2F7;
+    font-size: 0.9rem;
+}
+
+#tablaProductos th,
+#tablaProductos td {
+    height: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    line-height: 1.2;
+}
+
+#tablaProductos .table-action-btn {
+    width: 20px;
+    height: 20px;
+}
+
+/* Filas destacadas para stock bajo y agotado */
+.table-row-low-stock {
+    background-color: rgba(230, 57, 70, 0.04) !important;
+    border-left: 3px solid var(--color-danger);
+}
+
+.table-row-low-stock:hover {
+    background-color: rgba(230, 57, 70, 0.08) !important;
+}
+
+.table-row-out-of-stock {
+    background-color: rgba(100, 116, 139, 0.05) !important;
+    border-left: 3px solid #64748B;
+    opacity: 0.85;
+}
+
+.table-row-out-of-stock:hover {
+    background-color: rgba(100, 116, 139, 0.1) !important;
+}
+
+/* Botones de acción en tabla */
+.table-action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: var(--transition-base);
+}
+
+.table-action-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* 10. ESTADOS VACÍOS */
+.empty-icon-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #F1F5F9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 11. FORMULARIOS Y VALIDACIONES */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.25rem rgba(252, 163, 17, 0.2);
+}
+
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(230, 57, 70, 0.25);
+}
+
+.form-control.is-valid:focus,
+.form-select.is-valid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+/* 12. PAGINACIÓN */
+.pagination .page-link {
+    color: var(--color-navy);
+    border-color: var(--color-border);
+    padding: 0.35rem 0.75rem;
+    font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    color: #FFFFFF;
+}
+
+.pagination .page-link:hover {
+    background-color: #E2E8F0;
+    color: var(--color-navy);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #94A3B8;
+    background-color: #F8FAFC;
+}
+
+/* 13. MODALES Y TOASTS */
+.modal-content {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: 0;
+}
+
+.toast {
+    border-radius: 10px;
+}
+
+/* 14. ACCESIBILIDAD Y REDUCCIÓN DE MOVIMIENTO */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 15. RESPONSIVE Y PANTALLAS PEQUEÑAS */
+@media (max-width: 575.98px) {
+    .main-wrapper {
+        padding-top: 76px;
+    }
+    
+    .table-action-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+    
+    .table td, .table th {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
