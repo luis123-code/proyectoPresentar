@@ -1,4 +1,4 @@
-¿
+
 // Se ejecuta en modo estricto para buenas prácticas de desarrollo
 'use strict';
 
